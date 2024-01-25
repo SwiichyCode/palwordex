@@ -1,9 +1,9 @@
 import { DataTable } from "../DataTable";
 import { columns } from "./columns";
-import type { Pal } from "@prisma/client";
+import type { PalWithWorksuitability } from "../PalsVisualizer";
 
 type Props = {
-  pals: Pal[];
+  pals: PalWithWorksuitability[];
 };
 
 export const PalsDataTable = ({ pals }: Props) => {

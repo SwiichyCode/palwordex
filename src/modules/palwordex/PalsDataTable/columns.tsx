@@ -28,8 +28,8 @@ export const columns: ColumnDef<Pal>[] = [
 
       return (
         <div className="flex gap-1">
-          {worksuitability.map((ws) => (
-            <div>
+          {worksuitability.map((ws, index) => (
+            <div key={index}>
               <div>
                 {ws.worksuitabilityName} ({ws.worksuitabilityLevel})
               </div>

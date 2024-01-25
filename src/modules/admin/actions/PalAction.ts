@@ -2,6 +2,7 @@
 import { db } from "@/server/db";
 import { adminAction } from "@/lib/safe-action";
 import { addPalActionSchema } from "../PalForm_schema";
+import type { WorkSuitabilityName } from "@prisma/client";
 
 export const addPal = adminAction(addPalActionSchema, async (data) => {
   try {
@@ -11,7 +12,10 @@ export const addPal = adminAction(addPalActionSchema, async (data) => {
         name: data.name,
         picture: data.picture,
         worksuitability: {
-          create: data.worksuitability,
+          create: data.worksuitability.map((ws) => ({
+            worksuitabilityLevel: ws.worksuitabilityLevel,
+            worksuitabilityName: ws.worksuitabilityName as WorkSuitabilityName,
+          })),
         },
       },
     });
